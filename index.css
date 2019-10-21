@@ -2,7 +2,31 @@ body {
     width: 300px;
     margin: 20px auto;
     background-color: #eee;
+    font-family: 'Comfortaa', cursive;
   }
+
+.user {
+
+}
+
+.user-name {
+    margin-top: 50%;
+    margin-bottom: auto;
+    margin-left: 28%;
+    margin-right: auto;
+    z-index: 50;
+    position: absolute;
+}
+
+#routine-title {
+    margin-top: 50%;
+    margin-bottom: auto;
+    margin-left: 22%;
+    margin-right: auto;
+    z-index: 50;
+    position: absolute;
+    font-size: 200%;
+}
 
   .stage {
     width: 300px;
@@ -64,3 +88,5 @@ body {
     transform: rotateX(90deg) translateZ(-150px);
     z-index: -1;
   }
+
+  
