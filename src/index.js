@@ -18,6 +18,7 @@ function makeOrb(){
     
     const orb = document.createElement("figure")
     const nameInput = document.createElement("input")
+    nameInput.autocomplete = "off"
     const userForm = document.createElement("form")
     userForm.append(nameInput)
     nameInput.classList.add("user-name")
