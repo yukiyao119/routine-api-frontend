@@ -6,7 +6,8 @@ body {
   }
 
 .user {
-
+  width: 100vw;
+  height: auto;
 }
 
 .user-name {
@@ -16,6 +17,16 @@ body {
     margin-right: auto;
     z-index: 50;
     position: absolute;
+}
+
+#logged-name {
+  margin-top: 50%;
+  margin-bottom: auto;
+  margin-left: 22%;
+  margin-right: auto;
+  z-index: 50;
+  position: absolute;
+  font-size: 200%;
 }
 
 #routine-title {
