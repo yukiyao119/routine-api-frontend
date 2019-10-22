@@ -1,12 +1,14 @@
-
+// Selects elements for login 
 let userDiv = document.querySelector(".user")
 let userForm = document.querySelector("#username-form")
 
+// Adds event listener for the login form sumbition 
 userForm.addEventListener("submit", handleSubmit)
 function handleSubmit(evt) {
     evt.preventDefault()
     let username = document.querySelector("#js-username").value 
 
+    //posts to database
     fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
@@ -33,7 +35,9 @@ function handleSubmit(evt) {
     })
 }
 
+// definition of function called in fetch post
 function makeRoutineOrb(routine){
+    //creates and razzmatazz the the orb
     const stage = document.createElement("section")
     stage.classList.add("stage")
     
@@ -66,6 +70,7 @@ function makeRoutineOrb(routine){
         let headerModalDiv = document.createElement("div")
         let bodyModalDiv = document.createElement("div")
         let footerModalDiv = document.createElement("div")
+        let headerModalDivSpan = document.createElement("span")
     
         mainModalDiv.setAttribute("id", "taskModal")
         mainModalDiv.setAttribute("class", "modal")
@@ -74,7 +79,6 @@ function makeRoutineOrb(routine){
         
     
         headerModalDiv.setAttribute("class", "modal-header")
-        let headerModalDivSpan = document.createElement("span")
         headerModalDivSpan.setAttribute("class", "close")
         headerModalDivSpan.innerText = 'x'
 
@@ -106,7 +110,7 @@ function makeRoutineOrb(routine){
         mainModalDiv.append(contentModalDiv)
         mainModalDiv.style.display = "block"
 
-        userDiv.append(mainModalDiv)
+        routine.append(mainModalDiv)
     
         window.onclick = function(evt) {
             if (evt.target == mainModalDiv) {
