@@ -1,38 +1,28 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Object-Oriented JavaScript</title>
-    <meta charset="utf-8">
-    <script defer type="text/javascript" src="index.js"></script>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="Stylesheet" href="index.css" />
+    <link href="node_modules/hover.css/css/hover-min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
 
-  <body>
-
-<!-- user figure -->
-<div class="user container">
-    <!-- <section>
-        <figure>
-
-        </figure>
-    </section> -->
-
-</div>
-
-<!-- main area of routine cards -->
-    <div class="container">
-        <form id="new-routine-form">
-            Username: <input type="text" name="username">
-            <input type="button" onclick="myFunction()" value="Submit">
-        </form>
-        <div class="card"></div>
-
-        </div>
+<body>
+    <div class="user">
+        <section class="stage" id="login">
+            <figure class="orb hvr-bob" id="username-figure">
+                <span class="shadow"></span>
+                <form id="username-form">
+                    <input autocomplete="off" class="user-name" id="js-username" placeholder="Enter Username">
+                </form>
+            </figure>
+        </section>
     </div>
 
-<!-- add new routine button -->
-    <button>
-        
-    </button>
+    <script defer type="text/javascript" src="src/index.js"></script>
+</body>
 
-  </body>
 </html>
