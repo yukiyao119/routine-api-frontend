@@ -53,6 +53,69 @@ function makeRoutineOrb(routine){
 
     stage.append(orb)
     userDiv.append(stage)
+
+    routineTitleSpan.addEventListener("click", (evt) => {
+        makeAndDisplayModal(routine)
+        
+    })
     
-    // routineTitleSpan.addEventListener("click")
+    function makeAndDisplayModal(routine){
+        let newTaskList = document.createElement("ul")
+        let mainModalDiv = document.createElement("div")
+        let contentModalDiv = document.createElement("div")
+        let headerModalDiv = document.createElement("div")
+        let bodyModalDiv = document.createElement("div")
+        let footerModalDiv = document.createElement("div")
+    
+        mainModalDiv.setAttribute("id", "taskModal")
+        mainModalDiv.setAttribute("class", "modal")
+        
+        contentModalDiv.setAttribute("class", "modal-content")
+        
+    
+        headerModalDiv.setAttribute("class", "modal-header")
+        let headerModalDivSpan = document.createElement("span")
+        headerModalDivSpan.setAttribute("class", "close")
+        headerModalDivSpan.innerText = 'x'
+
+        headerModalDivSpan.onclick = () => {
+            mainModalDiv.style.display = "none"
+        } 
+
+        headerModalDiv.innerHTML = `<h2> ${routine.title} </h2>`
+        headerModalDiv.append(headerModalDivSpan)
+    
+        bodyModalDiv.setAttribute("class", "modal-body")
+        routine.tasks.forEach((task) => {
+
+            let newTaskItem = document.createElement("li")
+            newTaskItem.setAttribute("data-id", `${task.id}`)
+            newTaskItem.innerText = `${task.time } ${task.content}`
+            newTaskList.append(newTaskItem)
+            bodyModalDiv.append(newTaskList)
+        })
+
+    
+    
+        footerModalDiv.setAttribute("class", "modal-footer")
+    
+        contentModalDiv.append(headerModalDiv)
+        contentModalDiv.append(bodyModalDiv)
+        contentModalDiv.append(footerModalDiv)
+    
+        mainModalDiv.append(contentModalDiv)
+        mainModalDiv.style.display = "block"
+
+        userDiv.append(mainModalDiv)
+    
+        window.onclick = function(evt) {
+            if (evt.target == mainModalDiv) {
+              mainModalDiv.style.display = "none"
+            }
+        }
+    
+    }
+    
+
 }
+
