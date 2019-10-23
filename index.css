@@ -8,6 +8,7 @@ body {
 .user {
   width: 100vw;
   height: auto;
+  display: inline-block;
 }
 
 .routine-area {
