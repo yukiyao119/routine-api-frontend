@@ -138,26 +138,34 @@ function makeRoutineOrb(routine){
         
     })
 
-    orb.addEventListener("mousedown", (evt) => {
-        let deleteId = evt.target.parentElement.dataset.id
-        console.log(deleteId)
-
+    // Start hold to delete functionality 
         
-        this.downTimer = setTimeout(function() {
-            fetch(`http://localhost:3000/routines/${deleteId}`, {
-                 method: "DELETE"
-            })
-            // .then(res => res.json())
-            // .then(data => {
-            // })           
-            orb.parentElement.remove()
-        }, 3000)
+        let timeStop 
+        let delta
+        let timeStart
         
-    })
+        orb.addEventListener("mousedown", (evt) => {
+            timeStart = new Date()
+        })
 
+        orb.addEventListener("mouseup", (evt) => {
+            
+            let deleteId = evt.target.parentElement.dataset.id
+            timeStop = new Date ()
+            
+            delta = (timeStop - timeStart) / 1000.0
+            
+            if (delta > 2){
+                fetch(`http://localhost:3000/routines/${deleteId}`, {
+                     method: "DELETE"
+                 }).then(deleted => {
+                    orb.parentElement.remove()
+                    console.log("finally")
+                 })     
+             }
+        })
 
-        
-    
+    // End hold to delete functionality
     
     function makeAndDisplayModal(routine){
         
