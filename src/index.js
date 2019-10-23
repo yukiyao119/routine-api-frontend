@@ -146,6 +146,8 @@ function makeRoutineOrb(routine){
         
         orb.addEventListener("mousedown", (evt) => {
             timeStart = new Date()
+            orb.classList.add("animated")
+            orb.classList.add("pulse")
         })
 
         orb.addEventListener("mouseup", (evt) => {
@@ -159,7 +161,9 @@ function makeRoutineOrb(routine){
                 fetch(`http://localhost:3000/routines/${deleteId}`, {
                      method: "DELETE"
                  }).then(deleted => {
-                    orb.parentElement.remove()
+                     if(deleted.ok){
+                        orb.parentElement.remove()    
+                     }
                     console.log("finally")
                  })     
              }
