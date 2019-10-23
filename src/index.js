@@ -109,8 +109,11 @@ function handleSubmit(evt) {
 // definition of function called in fetch post
 function makeRoutineOrb(routine){
     //creates and razzmatazz the the orb
+    let stageId = routine.id
     const stage = document.createElement("section")
     stage.classList.add("stage")
+    stage.setAttribute("data-id", `${stageId}`)
+
     
     const spanOrb = document.createElement("span")
     spanOrb.classList.add("shadow")
@@ -122,6 +125,7 @@ function makeRoutineOrb(routine){
     const orb = document.createElement("figure")
     orb.classList.add("orb")
     orb.classList.add("hvr-bob")
+    
     orb.append(spanOrb)
     orb.append(routineTitleSpan)
     routineTitleSpan.innerText = `${routine.title}`
@@ -133,6 +137,27 @@ function makeRoutineOrb(routine){
         makeAndDisplayModal(routine)
         
     })
+
+    orb.addEventListener("mousedown", (evt) => {
+        let deleteId = evt.target.parentElement.dataset.id
+        console.log(deleteId)
+
+        
+        this.downTimer = setTimeout(function() {
+            fetch(`http://localhost:3000/routines/${deleteId}`, {
+                 method: "DELETE"
+            })
+            // .then(res => res.json())
+            // .then(data => {
+            // })           
+            orb.parentElement.remove()
+        }, 3000)
+        
+    })
+
+
+        
+    
     
     function makeAndDisplayModal(routine){
         let newTaskList = document.createElement("ul")
