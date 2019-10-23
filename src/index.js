@@ -114,7 +114,6 @@ function makeRoutineOrb(routine){
     stage.classList.add("stage")
     stage.setAttribute("data-id", `${stageId}`)
 
-    
     const spanOrb = document.createElement("span")
     spanOrb.classList.add("shadow")
 
@@ -138,84 +137,67 @@ function makeRoutineOrb(routine){
         
     })
 
-    orb.addEventListener("mousedown", (evt) => {
-        let deleteId = evt.target.parentElement.dataset.id
-        console.log(deleteId)
-
-        
-        this.downTimer = setTimeout(function() {
-            fetch(`http://localhost:3000/routines/${deleteId}`, {
-                 method: "DELETE"
-            })
-            // .then(res => res.json())
-            // .then(data => {
-            // })           
-            orb.parentElement.remove()
-        }, 3000)
-        
-    })
-
-
-        
-    
-    
     function makeAndDisplayModal(routine){
-        let newTaskList = document.createElement("ul")
+        
+        // Create and Razzmatazz Main Modal Div
         let mainModalDiv = document.createElement("div")
-        let contentModalDiv = document.createElement("div")
-        let headerModalDiv = document.createElement("div")
-        let bodyModalDiv = document.createElement("div")
-        let footerModalDiv = document.createElement("div")
-        let headerModalDivSpan = document.createElement("span")
-    
         mainModalDiv.setAttribute("id", "taskModal")
         mainModalDiv.setAttribute("class", "modal")
         
+        // // Create and Razzmatazz Content Modal Div
+        let contentModalDiv = document.createElement("div")
         contentModalDiv.setAttribute("class", "modal-content")
         
-    
+        // Create and Razzmatazz Header Modal Div with span exit
+        let headerModalDiv = document.createElement("div")
+        let headerModalDivSpan = document.createElement("span")
         headerModalDiv.setAttribute("class", "modal-header")
         headerModalDivSpan.setAttribute("class", "close")
         headerModalDivSpan.innerText = 'x'
-
+        
         headerModalDivSpan.onclick = () => {
             mainModalDiv.style.display = "none"
         } 
-
+        
         headerModalDiv.innerHTML = `<h2> ${routine.title} </h2>`
         headerModalDiv.append(headerModalDivSpan)
-    
+        
+        // Create, Razzmatazz, and Populate Body Modal Div 
+        let bodyModalDiv = document.createElement("div")
         bodyModalDiv.setAttribute("class", "modal-body")
+        let newTaskList = document.createElement("ul")
         routine.tasks.forEach((task) => {
-
+            
             let newTaskItem = document.createElement("li")
             newTaskItem.setAttribute("data-id", `${task.id}`)
             newTaskItem.innerText = `${task.time } ${task.content}`
             newTaskList.append(newTaskItem)
             bodyModalDiv.append(newTaskList)
         })
-
-    
-    
+        
+        // Create and Razzmatazz Footer Modal Div
+        let footerModalDiv = document.createElement("div")
         footerModalDiv.setAttribute("class", "modal-footer")
-    
+
+        // Append created elements to Content Modal Div
         contentModalDiv.append(headerModalDiv)
         contentModalDiv.append(bodyModalDiv)
         contentModalDiv.append(footerModalDiv)
-    
+
+
+        // Append content div to main div and style
         mainModalDiv.append(contentModalDiv)
         mainModalDiv.style.display = "block"
 
+        // Append main modial div to the routine area div 
         routinesDIV.append(mainModalDiv)
     
+        // Event listener to exit modal without clicking 'x'
         window.onclick = function(evt) {
             if (evt.target == mainModalDiv) {
               mainModalDiv.style.display = "none"
             }
         }
-    
-    }
-    
-
+    }   
 }
 
