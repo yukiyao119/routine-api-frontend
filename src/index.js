@@ -114,6 +114,7 @@ function makeRoutineOrb(routine){
     stage.classList.add("stage")
     stage.setAttribute("data-id", `${stageId}`)
 
+    
     const spanOrb = document.createElement("span")
     spanOrb.classList.add("shadow")
 
@@ -137,6 +138,27 @@ function makeRoutineOrb(routine){
         
     })
 
+    orb.addEventListener("mousedown", (evt) => {
+        let deleteId = evt.target.parentElement.dataset.id
+        console.log(deleteId)
+
+        
+        this.downTimer = setTimeout(function() {
+            fetch(`http://localhost:3000/routines/${deleteId}`, {
+                 method: "DELETE"
+            })
+            // .then(res => res.json())
+            // .then(data => {
+            // })           
+            orb.parentElement.remove()
+        }, 3000)
+        
+    })
+
+
+        
+    
+    
     function makeAndDisplayModal(routine){
         
         // Create and Razzmatazz Main Modal Div
