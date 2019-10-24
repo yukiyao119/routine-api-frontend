@@ -79,7 +79,7 @@ body {
     -webkit-filter: blur(5px);
     z-index: 2;
   }
-  .orb:after {
+  /* .orb:after {
     width: 100%;
     height: 100%;
     content: "";
@@ -94,7 +94,7 @@ body {
     -o-transform: translateX(-80px) translateY(-90px) skewX(-20deg);
     transform: translateX(-80px) translateY(-90px) skewX(-20deg);
     -webkit-filter: blur(10px);
-  }
+  } */
   
   .orb .shadow {
     position: absolute;
@@ -144,6 +144,42 @@ body {
   animation-name: animatetop;
   animation-duration: 0.4s
 }
+
+/* task part */
+
+/* .item { */
+  /*transition: transform .05s ease-in-out;*/
+/*   backface-visibility: hidden;
+} */
+
+
+
+/* .item label {
+  position: relative;
+} */
+/* .item label::after {
+  position: absolute;
+  content: "";
+  width: calc(100% + 6px);
+  height: 5px;
+  top: 50%;
+  left: -3px;
+  border-radius: 50%;
+  background: red;
+  mix-blend-mode: multiply;
+  transform: scale(0, 1);
+  transform-origin: center center;
+  transition: transform 0s .5s, opacity .5s, border-radius 0s .5s;
+  opacity: 0;
+} */
+/* .done.item label::after {
+  border-radius: 5px;
+  display: block;
+  transform: none;
+  transform-origin: left center;
+  transition: transform 1s, opacity .5s, border-radius 1s;
+  opacity: 1;
+} */
 
 /* Add Animation */
 @keyframes animatetop {
