@@ -131,12 +131,12 @@ function makeRoutineOrb(routine){
 
     stage.append(orb)
 
-    const futureModalDIV = document.createElement("div")
-    futureModalDIV.setAttribute = ("data-id", `${routine.id}`)
-    futureModalDIV.className = "js-futureModal"
+    // const futureModalDIV = document.createElement("div")
+    // futureModalDIV.setAttribute = ("data-id", `${routine.id}`)
+    // futureModalDIV.className = "js-futureModal"
 
-    stage.append(futureModalDIV)
-    userDiv.append(stage)
+    // stage.append(futureModalDIV)
+    routinesDIV.append(stage)
 
     routineTitleSpan.addEventListener("click", (evt) => {
         makeAndDisplayModal(routine)
@@ -193,7 +193,7 @@ function makeRoutineOrb(routine){
         let headerModalDivSpan = document.createElement("span")
         headerModalDiv.setAttribute("class", "modal-header")
         headerModalDivSpan.setAttribute("class", "close")
-        headerModalDivSpan.innerText = 'x'
+        headerModalDivSpan.innerText = 'xxx'
         
         headerModalDivSpan.onclick = () => {
             mainModalDiv.style.display = "none"
@@ -323,6 +323,7 @@ function makeRoutineOrb(routine){
         // Create NewTask button to Footer Div
         const newTaskBtn = document.createElement("button")
         newTaskBtn.innerText = "Add a new Task"
+        newTaskBtn.className = "js-new-task-btn"
         footerModalDiv.append(newTaskBtn)
 
         // Create form for add new Task
@@ -401,7 +402,7 @@ function makeRoutineOrb(routine){
         mainModalDiv.style.display = "block"
 
         // Append main modial div to the routine area div 
-        futureModalDIV.append(mainModalDiv)
+        stage.append(mainModalDiv)
     
         // Event listener to exit modal without clicking 'x'
         window.onclick = function(evt) {

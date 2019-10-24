@@ -1,5 +1,5 @@
 body {
-    width: 300px;
+    width: 100%;
     margin: 20px auto;
     background-color: #eee;
     font-family: 'Comfortaa', cursive;
@@ -52,6 +52,9 @@ body {
     margin: 20px;
     perspective: 1200px;
     perspective-origin: 50% 50%;
+  }
+  .stage#login {
+    margin: 10% 33%;
   }
 
   .orb {
@@ -106,6 +109,12 @@ body {
     z-index: -1;
   }
 
+
+  /* Outside Modal is a future modal div */
+  .modal{
+    width: 100%;
+  }
+
   /* Modal Header */
 .modal-header {
   padding: 2px 16px;
@@ -130,7 +139,7 @@ body {
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 80%;
+  width: 120%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatetop;
   animation-duration: 0.4s
