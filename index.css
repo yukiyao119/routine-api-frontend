@@ -172,14 +172,15 @@ body {
   transition: transform 0s .5s, opacity .5s, border-radius 0s .5s;
   opacity: 0;
 } */
-/* .done.item label::after {
+
+.done.item label::after {
   border-radius: 5px;
   display: block;
   transform: none;
   transform-origin: left center;
   transition: transform 1s, opacity .5s, border-radius 1s;
   opacity: 1;
-} */
+}
 
 /* Add Animation */
 @keyframes animatetop {

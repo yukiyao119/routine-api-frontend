@@ -143,12 +143,10 @@ function handleSubmit(evt) {
                 orb.classList.add("pulse")
             })
             orb.addEventListener("mouseup", (evt) => {
-                
                 let deleteId = evt.target.parentElement.dataset.id
                 timeStop = new Date ()
                 
                 delta = (timeStop - timeStart) / 1000.0
-                
                 if (delta > 2){
                     fetch(`http://localhost:3000/routines/${deleteId}`, {
                          method: "DELETE"
@@ -280,6 +278,7 @@ function handleSubmit(evt) {
                 }
             }
     
+            /* GET ALL TASKS BELONGS TO THIS ROUTINE */
             fetch(`http://localhost:3000/routines/${routine.id}`)
             .then(res => res.json())
             .then(routineObj => {
@@ -296,7 +295,6 @@ function handleSubmit(evt) {
                 newTaskItem.setAttribute("data-id", `${task.id}`)
                 newTaskItem.innerText = `${task.time } ${task.content} ${task.done}`
                 
-            
                 // create task edit btn
                 let editTaskBtn = document.createElement("button")
                 editTaskBtn.setAttribute("data-id", `${task.id}`)
@@ -308,11 +306,50 @@ function handleSubmit(evt) {
                 deleteTaskBtn.setAttribute("data-id", `${task.id}`)
                 deleteTaskBtn.innerText = "Delete"
                 newTaskItem.append(deleteTaskBtn)
+
+                // create task checkbox
+                let taskCheckbox = document.createElement("input")
+                taskCheckbox.type = "checkbox"
+                taskCheckbox.id = "scale"
+                taskCheckbox.names = "scales"
+                taskCheckbox.setAttribute("data-id", `${task.id}`)
+                newTaskItem.append(taskCheckbox)
             
                 newTaskList.append(newTaskItem)
-            
                 bodyModalDiv.append(newTaskList)
+
+
+                /* EDIT/UPDATE CHECKBOX */
+                newTaskItem.addEventListener("click", updateCheckbox)
+                function updateCheckbox(evt) {
+                    console.log(evt.target);
+                    if (evt.target.matches("[type='checkbox']")){
+                        let whatCheckedValueBecomesBool = evt.target.checked
+                        let id = evt.target.dataset.id
+                        // debugger
+                        fetch(`http://localhost:3000/tasks/${task.id}`, {
+                            method: 'PATCH',
+                            body: JSON.stringify({
+                                done: whatCheckedValueBecomesBool
+                            }),
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            }
+                            })
+                            .then(r => r.json())
+                            .then(updatedTaskJSON => {
+                                if (updatedTaskJSON.done === true) {
+                                    debugger
+                                    evt.target.parentElement.classList.add("done")
+                                } else {
+                                    evt.target.parentElement.classList.remove("done")
+                                }
+                            })
+                    } 
+                }
             
+
                 /* DELETE A TASK */
                 deleteTaskBtn.addEventListener("click", handleDelete)
                 function handleDelete(evt) {
@@ -391,7 +428,8 @@ function handleSubmit(evt) {
                         makeAndDisplayModal(updatedTaskObj.routine)
                     })
                 }
-            
+
+
             
             
             }
