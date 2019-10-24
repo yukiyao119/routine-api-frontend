@@ -5,6 +5,8 @@ const routineContainer = document.querySelector(".new-routine-container")
 let addRoutine = false 
 const addRoutineBtn = document.querySelector("#new-routine-btn")
 addRoutineBtn.style.display = "none"
+let pageFooter = document.querySelector("footer")
+
 
 // user log in form submit event listener
 userForm.addEventListener("submit", handleSubmit)
@@ -413,3 +415,45 @@ function makeRoutineOrb(routine){
     }   
 }
 
+// Start Footer Code
+quickLinks()
+
+function quickLinks(){
+    // Create footer content container
+    let footerContent = document.createElement("div")
+    footerContent.classList.add("footer-container")
+
+    // Create Icon Orbs
+
+    const iconStage = document.createElement("section")
+    iconStage.classList.add("icon-stage")
+        
+    // const spanOrb = document.createElement("span")
+    // spanOrb.classList.add("shadow")
+    
+    let transitIcon = document.createElement("span")
+    transitIcon.setAttribute("id", "transit-icon")
+    transitIcon.innerHTML = `<img src="https://img.icons8.com/wired/40/000000/bus.png"></img>`
+    
+    const iconOrb = document.createElement("figure")
+    iconOrb.classList.add("orb")
+    iconOrb.classList.add("hvr-bob")
+    iconOrb.append(transitIcon)
+    
+    iconStage.append(iconOrb)
+    footerContent.append(iconStage)
+
+    pageFooter.append(footerContent)
+
+    iconOrb.addEventListener("click", (evt) => {
+        fetch("")
+    })
+
+    
+    
+    // APP ID
+    // mqyqboxM4rNEM1SSRZa2
+
+}
+
+// End Footer Code

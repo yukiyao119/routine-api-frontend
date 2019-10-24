@@ -265,4 +265,29 @@ body {
 }
 /* End Animation for Delete Orbs */
 
+.footer-container {
+  width: 100%;
+  background-color: #eee;
+  font-family: 'Comfortaa', cursive;
+}
+
+#transitIcon {
+  margin-top: 50%;
+  margin-bottom: auto;
+  margin-left: 22%;
+  margin-right: auto;
+  z-index: 50;
+  position: relative;
+  font-size: 200%;
+}
+
+.icon-stage {
+  width: 65px;
+  height: 65px;
+  display: inline-block;
+  margin: 20px;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
   
