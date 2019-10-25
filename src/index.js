@@ -310,9 +310,8 @@ function handleSubmit(evt) {
                 // create task checkbox
                 let taskCheckbox = document.createElement("input")
                 taskCheckbox.type = "checkbox"
-                taskCheckbox.id = "scale"
-                taskCheckbox.names = "scales"
                 taskCheckbox.setAttribute("data-id", `${task.id}`)
+                taskCheckbox.innerText = "Done"
                 newTaskItem.append(taskCheckbox)
             
                 newTaskList.append(newTaskItem)
@@ -320,33 +319,38 @@ function handleSubmit(evt) {
 
 
                 /* EDIT/UPDATE CHECKBOX */
-                newTaskItem.addEventListener("click", updateCheckbox)
+                taskCheckbox.addEventListener("click", updateCheckbox)
                 function updateCheckbox(evt) {
                     console.log(evt.target);
-                    if (evt.target.matches("[type='checkbox']")){
-                        let whatCheckedValueBecomesBool = evt.target.checked
-                        let id = evt.target.dataset.id
-                        // debugger
-                        fetch(`http://localhost:3000/tasks/${task.id}`, {
-                            method: 'PATCH',
-                            body: JSON.stringify({
-                                done: whatCheckedValueBecomesBool
-                            }),
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json'
+
+                    let whatCheckedValueBecomesBool = evt.target.checked
+                    let task_id = evt.target.dataset.id
+                    debugger
+                    fetch(`http://localhost:3000/updatecheck`, {
+                        method: 'PATCH',
+                        body: JSON.stringify({
+                            done: whatCheckedValueBecomesBool,
+                            id: task_id
+                        }),
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        }
+                        })
+                        .then(r => r.json())
+                        .then(updatedTaskJSON => {
+                            console.log(updatedTaskJSON);
+                            debugger
+                            if (updatedTaskJSON.done === true) {
+                                evt.target.parentElement.classList.add("done")
+                            } 
+                            // else if(updatedTaskJSON.task.routine.count === 4){
+                            //     evt.target.parentElement.classList.add("emphasize")
+                            // } 
+                            else {
+                                evt.target.parentElement.classList.remove("done")
                             }
-                            })
-                            .then(r => r.json())
-                            .then(updatedTaskJSON => {
-                                if (updatedTaskJSON.done === true) {
-                                    debugger
-                                    evt.target.parentElement.classList.add("done")
-                                } else {
-                                    evt.target.parentElement.classList.remove("done")
-                                }
-                            })
-                    } 
+                        })
                 }
             
 

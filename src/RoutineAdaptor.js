@@ -10,7 +10,8 @@ class RoutineAdaptor {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                name: username
+                name: username,
+                count: 0
             })
         }).then(res => res.json())
     }
@@ -25,7 +26,8 @@ class RoutineAdaptor {
             body: JSON.stringify({
                 category: newCategory,
                 title: newTitle,
-                user_id: userId
+                user_id: userId,
+                count: 0
             })
         }).then(res => res.json())
       }

@@ -146,13 +146,10 @@ body {
 }
 
 /* task part */
-
-/* .item { */
-  /*transition: transform .05s ease-in-out;*/
-/*   backface-visibility: hidden;
+/* .item { 
+  transition: transform .05s ease-in-out;
+   backface-visibility: hidden;
 } */
-
-
 
 /* .item label {
   position: relative;
@@ -173,13 +170,27 @@ body {
   opacity: 0;
 } */
 
-.done.item label::after {
+.done {
+  transform: rotateX(360deg);
+  text-decoration: line-through;
+}
+
+input[type=checkbox]:checked {
+  color:red;
+  text-decoration: line-through;
+}
+
+.done input::after {
   border-radius: 5px;
   display: block;
   transform: none;
   transform-origin: left center;
   transition: transform 1s, opacity .5s, border-radius 1s;
   opacity: 1;
+}
+
+.emphasize{
+  background-color: chocolate;
 }
 
 /* Add Animation */
