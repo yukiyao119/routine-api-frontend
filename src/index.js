@@ -290,20 +290,23 @@ function handleSubmit(evt) {
             function displayOneTask(task) {
                 // // create LI item
                 let newTaskItem = document.createElement("li")
-                newTaskItem.className = `item ${task.done ? "done" : ""}`
+                newTaskItem.className = `item ${task.done ? "checked" : ""}`
+                // newTaskItem.setAttribute("class", "ui bullet list")
                 // let newTaskItem = document.createElement("li")
                 newTaskItem.setAttribute("data-id", `${task.id}`)
-                newTaskItem.innerText = `${task.time } ${task.content} ${task.done}`
+                newTaskItem.innerText = `${task.time } ${task.content} ${task.done}   `
                 
                 // create task edit btn
                 let editTaskBtn = document.createElement("button")
                 editTaskBtn.setAttribute("data-id", `${task.id}`)
+                editTaskBtn.setAttribute("id", `edit`)
                 editTaskBtn.innerText = "Edit"
                 newTaskItem.append(editTaskBtn)
             
                 // create task delete btn
                 let deleteTaskBtn = document.createElement("button")
                 deleteTaskBtn.setAttribute("data-id", `${task.id}`)
+                deleteTaskBtn.setAttribute("id", `delete`)
                 deleteTaskBtn.innerText = "Delete"
                 newTaskItem.append(deleteTaskBtn)
 
@@ -324,7 +327,9 @@ function handleSubmit(evt) {
                     console.log(evt.target);
 
                     let whatCheckedValueBecomesBool = evt.target.checked
+                    
                     let task_id = evt.target.dataset.id
+
                     debugger
                     fetch(`http://localhost:3000/updatecheck`, {
                         method: 'PATCH',
@@ -340,13 +345,14 @@ function handleSubmit(evt) {
                         .then(r => r.json())
                         .then(updatedTaskJSON => {
                             console.log(updatedTaskJSON);
+                            
                             debugger
                             if (updatedTaskJSON.done === true) {
                                 evt.target.parentElement.classList.add("done")
                             } 
-                            // else if(updatedTaskJSON.task.routine.count === 4){
-                            //     evt.target.parentElement.classList.add("emphasize")
-                            // } 
+                            else if(updatedTaskJSON.task.routine.count === 3){
+                                evt.target.parentElement.classList.add("emphasize")
+                            } 
                             else {
                                 evt.target.parentElement.classList.remove("done")
                             }
@@ -377,6 +383,7 @@ function handleSubmit(evt) {
                 const editTimeInput = document.createElement("input")
                 editTimeInput.setAttribute('type',"text")
                 editTimeInput.className = "js-edit-time"
+                // editTimeInput.setAttribute("class", "ui left corner labeled input")
                 editTimeInput.placeholder = "Eg: 6:00 PM"
                 editForm.append(editTimeInput)
             

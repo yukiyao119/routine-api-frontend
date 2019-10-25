@@ -1,8 +1,15 @@
 body {
     width: 100%;
     margin: 20px auto;
-    background-color: #eee;
+    /* background: #d9a7c7;   */
+    /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);   */
+    /* Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to right, #fffcdc, #d9a7c7);  */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: #EEF8FF;
     font-family: 'Comfortaa', cursive;
+    /* font-size: 18px; */
   }
 
 .user {
@@ -11,10 +18,7 @@ body {
   display: inline-block;
 }
 
-.routine-area {
-  width: 100vw;
-  height: auto;
-}
+
 
 .user-name {
     margin-top: 50%;
@@ -40,7 +44,7 @@ body {
     margin-bottom: auto;
     margin-left: 22%;
     margin-right: auto;
-    z-index: 50;
+    z-index: 1;
     position: absolute;
     font-size: 200%;
 }
@@ -57,15 +61,76 @@ body {
     margin: 10% 33%;
   }
 
+  .routine-area {
+    width: 100vw;
+    height: auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  section.stage:not(#login) {
+    padding-left: 10%;
+    padding-right: auto;
+    padding-top: 3%;
+    padding-bottom: auto;
+    height: auto;
+  }
+  
+
+/* PLAY WITH MARGIN BELOW!!!! */
+  .new-routine-container{
+    margin-left: 43vw;
+  }
+
+  /* STYLING THE WINDOWS - MAKE IT BIGGER OR WHATEVER YOU WANT */
+  .new-routine-container select {
+    background-color: red;
+  }
+
+  .new-routine-container select:hover {
+    background-color: violet;
+    width: 15vw;
+    height: 3vh;
+    border: 2px solid black;
+    border-radius: none;
+    transform: scale(1.5);
+    /* transform: rotate(120deg); */
+    transition-duration: 0.5s;
+  }
+
+  /* STYLING THE SUBMIT BUTTON  */
+  .new-routine-container input{
+    background-color: violet;
+    width: 15vw;
+    height: 3vh;
+    border: 2px solid black;
+  }
+
+  /* BUTTON */
+  #new-routine-btn{
+    margin-left: 43vw;
+  }
+
+  span#routine-title {
+    font-size: 20px;
+    color: red;
+  }
+
+  /* .orb:hover{
+    -webkit-animation-name: pulse 5s;
+    animation-name: pulse 5s;
+  } */
+
   .orb {
     display: inline-block;
-    width: 100%;
-    height: 100%;
+    width: 30vw;
+    height: 30vw;
     margin: 0;
     border-radius: 50%;
     position: relative;
     background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
   }
+
   .orb:before {
     content: "";
     position: absolute;
@@ -74,14 +139,23 @@ body {
     bottom: 2.5%;
     left: 5%;
     opacity: 0.6;
-    height: 100%;
-    width: 90%;
+    height: 30vw;
+    width: 27vw;
     -webkit-filter: blur(5px);
-    z-index: 2;
+    /* z-index: 2; */
   }
+
+  /* .red{
+
+  }
+
+  .blue{
+    background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
+  } */
+
   /* .orb:after {
-    width: 100%;
-    height: 100%;
+    width: 20vw;
+    height: 20vh;
     content: "";
     position: absolute;
     top: 5%;
@@ -98,8 +172,8 @@ body {
   
   .orb .shadow {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 30vw;
+    height: 30vw;
     background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
     -webkit-transform: rotateX(90deg) translateZ(-150px);
     -moz-transform: rotateX(90deg) translateZ(-150px);
@@ -112,23 +186,47 @@ body {
 
   /* Outside Modal is a future modal div */
   .modal{
-    width: 100%;
+    width: 35vw;
+    margin-top: 1vh;
   }
 
   /* Modal Header */
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  /* background-color: #f681ae; */
+  background: #FFAFBD;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ffc3a0, #FFAFBD);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ffc3a0, #FFAFBD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
 }
 
 /* Modal Body */
-.modal-body {padding: 2px 16px;}
+.modal-body {
+  padding: 2px 16px;
+}
+
+li button#edit{
+  background-color: green;
+}
+li button#delete{
+  background-color: red;
+}
+/* 
+li.modal-body {
+} */
+
+ul {
+  padding-inline-start: 20px;
+  font-size: 16px;
+}
 
 /* Modal Footer */
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  /* background-color: #f681ae; */
+  background: #FFAFBD;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ffc3a0, #FFAFBD);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ffc3a0, #FFAFBD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
 }
 
@@ -146,6 +244,9 @@ body {
 }
 
 /* task part */
+li.item {
+  margin: 10px 5px 5px 5px;
+}
 /* .item { 
   transition: transform .05s ease-in-out;
    backface-visibility: hidden;
@@ -300,10 +401,10 @@ input[type=checkbox]:checked {
   }
 }
 
-.pulse {
+/* .pulse {
   -webkit-animation-name: pulse;
   animation-name: pulse;
-}
+} */
 
 .animated {
   -webkit-animation-duration: 1s;
@@ -312,5 +413,7 @@ input[type=checkbox]:checked {
   animation-fill-mode: both;
 }
 /* End Animation for Delete Orbs */
+
+
 
   
