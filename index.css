@@ -18,8 +18,6 @@ body {
   display: inline-block;
 }
 
-
-
 .user-name {
     margin-top: 50%;
     margin-bottom: auto;
@@ -27,6 +25,15 @@ body {
     margin-right: auto;
     z-index: 50;
     position: absolute;
+    width: 50%;
+    height: 10%;
+    font-size: 15px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  /* color: pink; */
+  font-size: 20px;
+  text-size-adjust: auto;
 }
 
 #logged-name {
@@ -38,6 +45,11 @@ body {
   position: absolute;
   font-size: 200%;
 }
+
+
+/* #username-form{
+  width: 30%;
+} */
 
 #routine-title {
     margin-top: 50%;
@@ -79,16 +91,16 @@ body {
 
 /* PLAY WITH MARGIN BELOW!!!! */
   .new-routine-container{
-    margin-left: 43vw;
+    margin-left: 33vw;
   }
 
   /* STYLING THE WINDOWS - MAKE IT BIGGER OR WHATEVER YOU WANT */
   .new-routine-container select {
-    background-color: red;
+    background-color: #fdeff9;
   }
 
   .new-routine-container select:hover {
-    background-color: violet;
+    background-color: #ffafbd;
     width: 15vw;
     height: 3vh;
     border: 2px solid black;
@@ -100,20 +112,36 @@ body {
 
   /* STYLING THE SUBMIT BUTTON  */
   .new-routine-container input{
-    background-color: violet;
+    background-color: #ffafbd;
     width: 15vw;
     height: 3vh;
     border: 2px solid black;
   }
 
-  /* BUTTON */
+  /* NEW ROUTINE BUTTON */
   #new-routine-btn{
-    margin-left: 43vw;
+    margin-left: 38vw;
+    background-color: #FFAFBD;
+  }
+
+  #new-routine-btn:hover{
+    margin-left: 38vw;
+    transform: scale(1.5); 
+    transition-duration: 0.5s;
+    /* transform: rotate(120deg); */
   }
 
   span#routine-title {
-    font-size: 20px;
-    color: red;
+    font-size: 35px;
+    text-align: center;
+  }
+
+  span#routine-title:hover {
+    font-size: 35px;
+    text-align: center;
+    transform: scale(1.5);
+    transition-duration: 0.5s;
+    /* transform: rotate(120deg); */
   }
 
   /* .orb:hover{
@@ -206,10 +234,10 @@ body {
 }
 
 li button#edit{
-  background-color: green;
+  background-color: #29ffc6;
 }
 li button#delete{
-  background-color: red;
+  background-color:#ff4b1f;
 }
 /* 
 li.modal-body {
@@ -401,14 +429,14 @@ input[type=checkbox]:checked {
   }
 }
 
-/* .pulse {
+.pulse {
   -webkit-animation-name: pulse;
   animation-name: pulse;
-} */
+} 
 
 .animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 1.9s;
+  animation-duration: 1.9s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }

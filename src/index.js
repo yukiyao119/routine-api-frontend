@@ -139,6 +139,7 @@ function handleSubmit(evt) {
             let timeStart
             orb.addEventListener("mousedown", (evt) => {
                 timeStart = new Date()
+                orb.classList.remove("hvr-bob")
                 orb.classList.add("animated")
                 orb.classList.add("pulse")
             })
@@ -156,6 +157,8 @@ function handleSubmit(evt) {
                          }
                         console.log("finally")
                      })     
+                 } else {
+                    orb.classList.add("hvr-bob")
                  }
             })
         // End hold to delete functionality
@@ -202,7 +205,7 @@ function handleSubmit(evt) {
     
             // Create NewTask button to Footer Div
             const newTaskBtn = document.createElement("button")
-            newTaskBtn.innerText = "Add a new Task"
+            newTaskBtn.innerText = "Click here to create a new task"
             newTaskBtn.className = "js-new-task-btn"
             footerModalDiv.append(newTaskBtn)
     
