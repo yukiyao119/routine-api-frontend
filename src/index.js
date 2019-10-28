@@ -293,11 +293,11 @@ function handleSubmit(evt) {
             function displayOneTask(task) {
                 // // create LI item
                 let newTaskItem = document.createElement("li")
-                newTaskItem.className = `item ${task.done ? "checked" : ""}`
+                newTaskItem.className = `item ${task.done ? "done" : ""}`
                 // newTaskItem.setAttribute("class", "ui bullet list")
                 // let newTaskItem = document.createElement("li")
                 newTaskItem.setAttribute("data-id", `${task.id}`)
-                newTaskItem.innerText = `${task.time } ${task.content} ${task.done}   `
+                newTaskItem.innerText = `${task.time } ${task.content}   `
                 
                 // create task edit btn
                 let editTaskBtn = document.createElement("button")
@@ -328,12 +328,9 @@ function handleSubmit(evt) {
                 taskCheckbox.addEventListener("click", updateCheckbox)
                 function updateCheckbox(evt) {
                     console.log(evt.target);
-
                     let whatCheckedValueBecomesBool = evt.target.checked
-                    
                     let task_id = evt.target.dataset.id
-
-                    debugger
+                    // debugger
                     fetch(`http://localhost:3000/updatecheck`, {
                         method: 'PATCH',
                         body: JSON.stringify({
@@ -348,14 +345,20 @@ function handleSubmit(evt) {
                         .then(r => r.json())
                         .then(updatedTaskJSON => {
                             console.log(updatedTaskJSON);
-                            
-                            debugger
-                            if (updatedTaskJSON.done === true) {
+                            // debugger
+                            if (updatedTaskJSON.task.done === true) {
+                                task.done = updatedTaskJSON.task.done
                                 evt.target.parentElement.classList.add("done")
+                                evt.target.parentElement.innerHTML =`
+                                 
+                                <form id="edit-task-form" data-id=${task.id} style="display: none;"><input type="text" class="js-edit-time" placeholder="Eg: 6:00 PM"><input type="text" class="js-edit-content" placeholder="Eg: Hit the gym"><input type="submit" value="Submit"><br></form>${task.time } ${task.content}   <button data-id=${task.id} id="edit">Edit</button><button data-id=${task.id} id="delete">Delete</button><input type="checkbox" data-id=${task.id}>
+                                `
+                                console.log("checked & crossed!");
+                                debugger
                             } 
-                            else if(updatedTaskJSON.task.routine.count === 3){
-                                evt.target.parentElement.classList.add("emphasize")
-                            } 
+                            // else if(updatedTaskJSON.task.routine.count === 3){
+                            //     evt.target.parentElement.classList.add("emphasize")
+                            // } 
                             else {
                                 evt.target.parentElement.classList.remove("done")
                             }

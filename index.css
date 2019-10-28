@@ -312,7 +312,7 @@ input[type=checkbox]:checked {
 .done input::after {
   border-radius: 5px;
   display: block;
-  transform: none;
+  transform: scale(1.5);
   transform-origin: left center;
   transition: transform 1s, opacity .5s, border-radius 1s;
   opacity: 1;
